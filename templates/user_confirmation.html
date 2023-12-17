@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Confirmation</title>
+</head>
+<body>
+    <h1>User Confirmation</h1>
+    <form method="post" action="{{ url_for('user_confirmation', customer_id=customer.id, contract_id=contract.id) }}">
+        <!-- Display contract and customer information -->
+        <p>Contract Number: {{ contract.contract_number }}</p>
+        <p>Insurance Premium: ${{ contract.premium }}</p>
+        <button type="submit" name="accept">Accept</button>
+        <button type="submit" name="decline">Decline</button>
+    </form>
+</body>
+</html>
