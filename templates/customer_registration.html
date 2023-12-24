@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Registration</title>
+    <style>
+        body {
+            font-size: 18px; /* Adjust the font size as needed */
+        }
+  
+        label {
+            font-size: 18px; /* Adjust the font size for labels */
+            margin-bottom: 5px; /* Add some space between labels and input fields */
+        }
+  
+        input {
+            font-size: 18px; /* Adjust the font size for input fields */
+            margin-bottom: 10px; /* Add some space between input fields */
+        }
+  
+        button {
+            font-size: 18px; /* Adjust the font size for the button */
+        }
+    </style>
 </head>
 <body>
     <h1>Customer Registration</h1>
+    <p>Dear user, you should enter your SSN as your user name</p>
     <form method="post" action="{{ url_for('customer_registration') }}">
         <label for="ssn">SSN:</label>
         <input type="text" name="ssn" required>

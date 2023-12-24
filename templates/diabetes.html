@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Insurance</title>
+    <style>
+      body {
+          font-size: 18px; /* Adjust the font size as needed */
+      }
+
+      label {
+          font-size: 18px; /* Adjust the font size for labels */
+          margin-bottom: 5px; /* Add some space between labels and input fields */
+      }
+
+      input {
+          font-size: 18px; /* Adjust the font size for input fields */
+          margin-bottom: 10px; /* Add some space between input fields */
+      }
+
+      button {
+          font-size: 18px; /* Adjust the font size for the button */
+      }
+  </style>
+</head>
+<body>
+    <h1>Diabetes Insurance</h1>
+    <p>Hello, user {{ssn}}. <a href="{{ url_for('start_page') }}"><button> Log out</button></a></p>
+    <p>To acquire a quote, you should enter the following information.</p>
+    <form method="post" action="{{ url_for('diabetes', ssn=ssn) }}">
+        <label for="Pregnancies">Pregnancies:</label>
+        <input type="text" name="Pregnancies" required><br>
+        
+        <label for="Glucose">Glucose:</label>
+        <input type="text" name="Glucose" required><br>
+
+        <label for="BloodPressure">Blood Pressure:</label>
+        <input type="text" name="BloodPressure" required><br>
+        
+        <label for="SkinThickness">Skin Thickness:</label>
+        <input type="text" name="SkinThickness" required><br>
+
+        <label for="Insulin">Insulin:</label>
+        <input type="text" name="Insulin" required><br>
+
+        <label for="BMI">BMI:</label>
+        <input type="text" name="BMI" required><br>
+
+        <label for="Age">Age:</label>
+        <input type="text" name="Age" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
