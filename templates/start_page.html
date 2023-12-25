@@ -6,21 +6,83 @@
     <title>Insurance Application</title>
     <style>
         body {
-            font-size: 18px; /* Adjust the font size as needed */
+            font-family: Arial, sans-serif; /* Professional font */
+            font-size: 18px;
+            color: #333; /* Neutral color for text */
+            background-color: #f4f4f4; /* Light background */
+            margin: 0;
+            padding: 20px;
         }
-  
+
+        header {
+            background-color: #007bff; /* Primary color */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
         label {
-            font-size: 18px; /* Adjust the font size for labels */
-            margin-bottom: 5px; /* Add some space between labels and input fields */
+            display: block;
+            margin: 10px 0 5px;
         }
-  
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
         button {
-            font-size: 18px; /* Adjust the font size for the button */
+            background-color: #007bff; /* Primary color */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+
+        footer {
+            background-color: #333; /* Dark background for footer */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .quote-button {
+            display: block;
+            width: max-content;
+            margin: 50px auto;
+            padding: 20px 40px;
+            font-size: 24px; /* Increased font size */
+            text-decoration: none; /* Remove text underline */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Insurance Application</h1>
-    <a href="{{ url_for('customer_registration') }}">Get a Quote</a>
+    <header>
+        <h1>Welcome to the Insurance Application</h1>
+    </header>
+
+    <div class="container">
+        <a href="{{ url_for('customer_registration') }}" style="display: inline-block; margin-top: 20px;">Get a Quote</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Insurance Company. All rights reserved.</p>
+    </footer>
 </body>
 </html>
