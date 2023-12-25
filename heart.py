@@ -22,3 +22,6 @@ def heart_result():
     testdata = pd.read_csv('heart_disease_input.csv')
     test_pred = xgb.predict(testdata)
     return test_pred
+
+if __name__ == '__main__':
+    print(heart_result())

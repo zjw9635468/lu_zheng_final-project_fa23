@@ -73,15 +73,19 @@ def heart_disease(ssn):
         SlopeOfST = request.form['SlopeOfST']
         NumberOfVesselsFluro = request.form['NumberOfVesselsFluro']
         Thallium = request.form['Thallium']
-        
+
+        header = ["Age","Sex","Chest pain type","BP","Cholesterol","FBS over 120","EKG results","Max HR","Exercise angina","ST depression","Slope of ST","Number of vessels fluro","Thallium"]
         data = [age, sex, ChestPainType, bp, cholesterol, FBSOver120, EKGResults, MaxHR, ExerciseAngina,
         STDepression, SlopeOfST, NumberOfVesselsFluro, Thallium]
 
         filename = 'heart_disease_input.csv'
         with open(filename, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(header)
             writer.writerow(data)
-        premium = random.randint(4000,6000)
+
+        result = heart_result()[0]
+        premium = random.randint(2500,4000) + result * 3000
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
         return render_template('heart_disease.html', ssn = ssn)
@@ -90,6 +94,7 @@ def heart_disease(ssn):
 def kidney_disease(ssn):
     if request.method == 'POST':
         product = 2
+        Age = request.form['Age']
         BloodPressure = request.form['BloodPressure']
         RedBloodCells = request.form['RedBloodCells']
         BloodGlucoseRandom = request.form['BloodGlucoseRandom']
@@ -99,16 +104,20 @@ def kidney_disease(ssn):
         RedBloodCellCount = request.form['RedBloodCellCount']
         Appetite = request.form['Appetite']
         Anemia = request.form['Anemia']
-        data = [BloodPressure, RedBloodCells, BloodGlucoseRandom, BloodUrea, SerumCreatinine,
+
+        header = ["age", "bp","rbc","bgr","bu","sc","wc","rc","appet","ane"]
+        data = [Age, BloodPressure, RedBloodCells, BloodGlucoseRandom, BloodUrea, SerumCreatinine,
         WhiteBloodCellCount, RedBloodCellCount, Appetite, Anemia]
 
         filename = 'kidney_disease_input.csv'
 
         with open(filename, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
-            writer.writerow(data) 
+            writer.writerow(header)
+            writer.writerow(data)
 
-        premium = random.randint(4000,6000)
+        result = kindey_result()[0]
+        premium = random.randint(2000,3000) + result * 2500
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
         return render_template('kidney_disease.html', ssn = ssn)
@@ -124,15 +133,21 @@ def diabetes(ssn):
         Insulin = request.form['Insulin']
         BMI = request.form['BMI']
         Age = request.form['Age']
-        data = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, Age]
+        DiabetesPedigreeFunction = request.form['DiabetesPedigreeFunction']
+        data = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI,DiabetesPedigreeFunction, Age]
 
         filename = 'diabetes_input.csv'
+        headers = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI",
+                   "DiabetesPedigreeFunction", "Age"]
 
+        # Writing to the CSV file
         with open(filename, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(headers)
             writer.writerow(data)
-            
-        premium = random.randint(4000,6000)
+
+        result = diabetes_result()[0]
+        premium = random.randint(1000,2000) + result * 2500
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
         return render_template('diabetes.html', ssn = ssn)
