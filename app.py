@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from database import engine
 import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
-##push test
+
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ssn = db.Column(db.String(9), unique=True, nullable=False)
