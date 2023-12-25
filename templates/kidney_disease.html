@@ -137,6 +137,9 @@
         <p>Hello, user {{ssn}}. <a href="{{ url_for('start_page') }}"><button> Log out</button></a></p>
         <p>To acquire a quote, you should enter the following information.</p>
         <form method="post" action="{{ url_for('kidney_disease', ssn=ssn) }}">
+            <label for="Age">Age:</label>
+            <input type="text" name="Age" required><br>
+
             <label for="BloodPressure">Blood Pressure:</label>
             <input type="text" name="BloodPressure" required><br>
 

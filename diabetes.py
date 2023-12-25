@@ -61,3 +61,6 @@ def diabetes_result():
     testdata = pd.read_csv('diabetes_input.csv')
     test_pred = regressor.predict(testdata)
     return test_pred
+
+if __name__ == '__main__':
+    print(diabetes_result())
