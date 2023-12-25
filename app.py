@@ -4,7 +4,9 @@ from database import engine
 from diabetes import diabetes_result
 from heart import heart_result
 from kindey import kindey_result
+
 import random
+import csv
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -58,6 +60,27 @@ def product_selection(ssn):
 def heart_disease(ssn):
     if request.method == 'POST':
         product = 1
+        age = request.form['age']
+        sex = request.form['sex']
+        ChestPainType = request.form['ChestPainType']
+        bp = request.form['bp']
+        cholesterol = request.form['cholesterol']
+        FBSOver120 = request.form['FBSOver120']
+        EKGResults = request.form['EKGResults']
+        MaxHR = request.form['MaxHR']
+        ExerciseAngina = request.form['ExerciseAngina']
+        STDepression = request.form['STDepression']
+        SlopeOfST = request.form['SlopeOfST']
+        NumberOfVesselsFluro = request.form['NumberOfVesselsFluro']
+        Thallium = request.form['Thallium']
+        
+        data = [age, sex, ChestPainType, bp, cholesterol, FBSOver120, EKGResults, MaxHR, ExerciseAngina,
+        STDepression, SlopeOfST, NumberOfVesselsFluro, Thallium]
+
+        filename = 'heart_disease_input.csv'
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(data)
         premium = random.randint(4000,6000)
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
@@ -67,6 +90,24 @@ def heart_disease(ssn):
 def kidney_disease(ssn):
     if request.method == 'POST':
         product = 2
+        BloodPressure = request.form['BloodPressure']
+        RedBloodCells = request.form['RedBloodCells']
+        BloodGlucoseRandom = request.form['BloodGlucoseRandom']
+        BloodUrea = request.form['BloodUrea']
+        SerumCreatinine = request.form['SerumCreatinine']
+        WhiteBloodCellCount = request.form['WhiteBloodCellCount']
+        RedBloodCellCount = request.form['RedBloodCellCount']
+        Appetite = request.form['Appetite']
+        Anemia = request.form['Anemia']
+        data = [BloodPressure, RedBloodCells, BloodGlucoseRandom, BloodUrea, SerumCreatinine,
+        WhiteBloodCellCount, RedBloodCellCount, Appetite, Anemia]
+
+        filename = 'kidney_disease_input.csv'
+
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(data) 
+
         premium = random.randint(4000,6000)
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
@@ -76,6 +117,21 @@ def kidney_disease(ssn):
 def diabetes(ssn):
     if request.method == 'POST':
         product = 3
+        Pregnancies = request.form['Pregnancies']
+        Glucose = request.form['Glucose']
+        BloodPressure = request.form['BloodPressure']
+        SkinThickness = request.form['SkinThickness']
+        Insulin = request.form['Insulin']
+        BMI = request.form['BMI']
+        Age = request.form['Age']
+        data = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, Age]
+
+        filename = 'diabetes_input.csv'
+
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(data)
+            
         premium = random.randint(4000,6000)
         return redirect(url_for('user_confirmation', ssn = ssn, product = product, premium = premium))
     else:
