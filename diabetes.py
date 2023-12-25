@@ -58,7 +58,6 @@ X_train, X_test, Y_train, Y_test = train_test_split( X, Y, test_size = 0.2, rand
 regressor = LogisticRegression()
 regressor = regressor.fit(X_train, Y_train)
 def diabetes_result():
-    testdata = pd.read_csv('testdata_diabetes.csv')
+    testdata = pd.read_csv('diabetes_input.csv')
     test_pred = regressor.predict(testdata)
-    dataframe = pd.DataFrame({'outcome': test_pred})
-    dataframe.to_csv("outcome.csv", index=False)
+    return test_pred
