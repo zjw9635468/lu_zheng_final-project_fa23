@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-# from database import engine
+from database import engine
+from diabetes import diabetes_result
+from heart import heart_result
+from kindey import kindey_result
+
 import random
 import csv
 
