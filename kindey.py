@@ -37,7 +37,6 @@ classifier = RandomForestClassifier()
 classifier.fit(X_train, Y_train)
 
 def kindey_result():
-    testdata = pd.read_csv('testdata_kidney.csv')
+    testdata = pd.read_csv('kidney_disease_input.csv')
     test_pred = classifier.predict(testdata)
-    dataframe = pd.DataFrame({'outcome': test_pred})
-    dataframe.to_csv("outcome_kindey.csv", index=False)
+    return test_pred

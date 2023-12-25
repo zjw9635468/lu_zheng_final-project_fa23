@@ -19,7 +19,6 @@ xgb = XGBClassifier()
 xgb.fit(X_train, Y_train)
 
 def heart_result():
-    testdata = pd.read_csv('testdata_heart.csv')
+    testdata = pd.read_csv('heart_disease_input.csv')
     test_pred = xgb.predict(testdata)
-    dataframe = pd.DataFrame({'outcome': test_pred})
-    dataframe.to_csv("outcome_heart.csv", index=False)
+    return test_pred
